@@ -77,7 +77,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker compose stop
-            sudo docker compose rm web
             rm .env -f
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
