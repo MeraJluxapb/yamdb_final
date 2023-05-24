@@ -76,7 +76,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_api:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
             sudo docker compose stop
             rm .env -f
             touch .env
