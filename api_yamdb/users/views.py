@@ -11,7 +11,6 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
-
 from users.permissions import IsAdminUser
 from users.serializers import (GettingTokenSerializer, SignUpSerializer,
                                UserSerializer)

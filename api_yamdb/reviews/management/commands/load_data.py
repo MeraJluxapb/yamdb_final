@@ -4,9 +4,9 @@ import os
 
 from django.core.management.base import BaseCommand
 from django.db import DatabaseError, IntegrityError
+from reviews.models import Category, Comment, Genre, Review, Title, User
 
 from api_yamdb.settings import BASE_DIR
-from reviews.models import Category, Comment, Genre, Review, Title, User
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
