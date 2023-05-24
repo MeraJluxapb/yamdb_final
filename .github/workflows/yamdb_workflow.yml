@@ -76,8 +76,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker-compose stop
-            sudo docker-compose rm web
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
+            # sudo docker-compose down -v
+            sudo docker-compose down
             rm .env -f
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
