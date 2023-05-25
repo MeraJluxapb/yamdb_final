@@ -5,16 +5,17 @@ services:
   db:
     image: postgres:13.0-alpine
     volumes:
-      - /var/lib/postgresql/data/
+      - dbdata:/var/lib/postgresql/data
     env_file:
       - ./.env
 
   web:
-    build: ../api_yamdb/
+    image: lychaginad/yamdb:latest
     restart: always
+
     volumes:
-      - static_value:/app/static/
-      - media_value:/app/media/
+    - static_value:/app/static/
+    - media_value:/app/media/
     depends_on:
       - db
     env_file:
