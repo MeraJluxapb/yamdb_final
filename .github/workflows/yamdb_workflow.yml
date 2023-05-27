@@ -61,7 +61,7 @@ jobs:
             tags: ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: build_and_push_to_docker_hub
     steps:
       - name: executing remote ssh commands to deploy
@@ -71,8 +71,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
             sudo docker compose stop
+            sudo docker compose rm web
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
             rm .env -f
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
